@@ -1,5 +1,7 @@
 """Application entrypoint for the AI Security Control Plane."""
 
+import os
+
 try:
     from fastapi import FastAPI, Response
 except ModuleNotFoundError:
@@ -18,6 +20,12 @@ from src.api.routes.analyze import (
 )
 from src.core.config import load_environment
 from src.models.requests import SecurityRequest
+
+
+def get_port() -> int:
+    """Return the runtime HTTP port, defaulting to Cloud Run's 8080."""
+
+    return int(os.environ.get("PORT", 8080))
 
 
 def create_app():
@@ -60,3 +68,9 @@ def create_app():
 
 
 app = create_app()
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run("main:app", host="0.0.0.0", port=get_port())
