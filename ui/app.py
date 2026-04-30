@@ -10,9 +10,7 @@ import requests
 import streamlit as st
 
 
-API_URL = os.getenv(
-    "API_URL",
-    "http://127.0.0.1:8000/analyze")
+API_URL = os.getenv("API_URL", "http://127.0.0.1:8000/analyze")
 DOMAINS = {
     "Lab interpretation": "lab_interpretation",
     "Radiology summary": "radiology_summary",
