@@ -1,10 +1,11 @@
 """Streamlit dashboard for the AI Security Control Plane demo."""
 
 from __future__ import annotations
-
+import os
 from dataclasses import dataclass
 from typing import Any
 from uuid import uuid4
+
 
 import requests
 import streamlit as st
